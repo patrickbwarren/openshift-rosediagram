@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Passage orientation diagrams</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#eval").click(function(){
+          $.post("/exec", {
+            url: $("#url").val(),
+            ns: $("input:radio[name=ns]:checked").val(),
+            color: $("input:radio[name=color]:checked").val(),
+            title: $("#title").val()
+          }, function(data){
+            $("#result").html(data)
+        });
+        return false;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Passage orientation diagrams from survex .3d files</h1>
+    This is a very simple interface to generate passage orientation 'rose' diagrams from 
+    <a href="http://survex.com/">survex</a> .3d files
+    that are available online,
+    for example:<br> 
+    <tt>http://www.geography.lancs.ac.uk/matienzo/surveys/2889.3d</tt> (Torca la Vaca)<br>
+    <tt>http://cave-registry.org.uk/svn/NorthernEngland/ThreeCountiesArea/survexdata/leckfell.3d</tt> 
+    (Leck Fell compilation)<br><br>
+    For <a href="http://www.dropbox.com/">Dropbox</a> files,
+    right-click on the file and select 'share link' to obtain a public
+    link.  Paste this link into a browser then right-click on the
+    'download' button that appears, copy and paste that link into the box
+    below.  It should look something like:<br>
+    <tt>https://dl.dropboxusercontent.com/.../filename.3d?dl=1&amp;token_hash=...</tt><br><br>
+
+    <textarea name="url" id="url" rows="3" cols="50"
+	      placeholder="Paste the URL of your .3d file in here."></textarea><br><br>
+    Number of sectors : 
+    <input type="radio" name="ns" value="8">8
+    <input type="radio" name="ns" value="16" checked>16
+    <input type="radio" name="ns" value="32">32
+    <input type="radio" name="ns" value="64">64<br><br>
+    <input type="radio" name="color" value="0">b/w
+    <input type="radio" name="color" value="1" checked>colour<br><br>
+    Title :
+    <input type="text" size="30" name="title" id="title"><br><br>
+    <input type="button" value="Generate diagram" id="eval" />
+
+    <p id="result"></p>
+
+    <hr>
+    Powered by <a href="http://www.redhat.com/">RedHat</a> :
+    <a href="https://www.openshift.com/">OpenShift</a> --
+Source code on <a href="https://github.com/">GitHub</a> at
+<a href="https://github.com/patrickbwarren/www-patrickbwarren"> 
+patrickbwarren/www-patrickbwarren</a> 
+
+  </body>
+</html>
