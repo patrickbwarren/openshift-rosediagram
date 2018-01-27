@@ -1,5 +1,7 @@
 # Passage orientation diagrams
 
+_Code being migrated to an Inkscape plugin as OpenShift 2.0 no longer exists_
+
 This is a simple web interface to generate passage orientation 'rose' diagrams from survex .3d files that are available online.  It uses Redhat OpenShift and is cloned from https://github.com/openshift-quickstart/r-quickstart.
 I can recommend reading through the docs associated with the R quickstart to see just how closely I've copied the underlying ideas!
 
